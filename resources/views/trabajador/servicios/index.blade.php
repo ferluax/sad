@@ -1,6 +1,6 @@
 <x-plantilla>
-    <table>
-        <thead>
+    <table class="table table-light">
+        <thead class="thead-light">
             <tr>
                 <th>NOMBRE</th>
                 <th>CATEGORIA</th>
@@ -23,13 +23,13 @@
                     <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$servicios->imagen }}" width="200" alt="">
                 </td>
                 <td>
-                    <a href="{{url ('/trabajador/servicios/'.$servicios->id.'/edit') }}">Editar</a>    
+                    <a class="btn btn-warning" href="{{url ('/trabajador/servicios/'.$servicios->id.'/edit') }}">Editar</a>    
                      | 
                         <!-- formulario para eliminar un registro -->
-                        <form action="{{ url('/trabajador/servicios/'.$servicios->id ) }}" method="post">
+                        <form class="d-inline" action="{{ url('/trabajador/servicios/'.$servicios->id ) }}" method="post">
                             @csrf
                             {{ method_field('delete') }}
-                            <input type="submit" onclick="return confirm('¿Estas seguro?')" value="Eliminar">
+                            <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro?')" value="Eliminar">
                         </form>
                     </td>
             </tr>

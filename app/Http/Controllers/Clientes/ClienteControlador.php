@@ -50,11 +50,11 @@ class ClienteControlador extends Controller
     public function show($id)
     {
         //Vamos a recuperar los datos
-        $servicios = Servicios::find($id)->get();
+        $servicios = Servicios::find($id);
         //dd($servicios);
         //return $servicios->nombre;
         return view('cliente.paginas.show', compact('servicios'));
-        // return response()->json($servicios);
+        //return response()->json($servicios);
     }
 
     /**
