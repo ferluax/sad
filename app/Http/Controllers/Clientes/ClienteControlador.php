@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Clientes;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Models\Servicios;
 
@@ -13,12 +14,18 @@ class ClienteControlador extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
-        $datos['servicios']=Servicios::all();
-        return view('cliente.paginas.index', $datos);
+        //funcion para poder buscar un servicio en especifico con el nombre
+        $buscar = trim($request->get('buscar'));
+        $servicios = DB::table('servicios')->select('id','nombre', 'categoria', 'imagen')->where('nombre','LIKE','%'.$buscar .'%')->orWhere('categoria','LIKE','%'.$buscar .'%')->paginate(100);
+        return view('cliente.paginas.index', compact('servicios', 'buscar'));
+
+        // en esta funcion muestras todos los registros y no puedes buscar uno en especifico
+        // $datos['servicios']=Servicios::all();
+        // return view('cliente.paginas.index', $datos);
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -49,12 +56,8 @@ class ClienteControlador extends Controller
      */
     public function show($id)
     {
-        //Vamos a recuperar los datos
-        $servicios = Servicios::find($id);
-        //dd($servicios);
-        //return $servicios->nombre;
-        return view('cliente.paginas.show', compact('servicios'));
-        //return response()->json($servicios);
+        $data= Servicios::find($id);
+        return view('cliente.paginas.detail',['servicios'=>$data]);
     }
 
     /**
