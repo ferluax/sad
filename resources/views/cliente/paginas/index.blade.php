@@ -1,4 +1,9 @@
 <x-plantilla>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     <div>
         {{-- formulario para poder obtener la busqueda que el usuario realice --}}
         <form action="{{ route('cliente.paginas.index') }}" method="get">

@@ -1,11 +1,13 @@
-$(document).ready(function(){
+var header = document.getElementById('Header')
 
-	$(window).scroll(function(){
-		if( $(this).scrollTop() > 0 ){
-			$('header').addClass('header2');
-		} else {
-			$('header').removeClass('header2');
-		}
-	});
+window.addEventListener("scroll", function(){
+    var scroll = window.scrollY;
+    if(scrollY>0){
+        header.style.backgroundColor = '#121212';
 
-});
+    }
+    else{
+        header.style.backgroundColor = 'transparent';
+    }
+
+})

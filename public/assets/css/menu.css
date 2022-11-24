@@ -11,7 +11,6 @@ body{
     height: 100%;
     width: 100%;
     position: relative;
-    background: linear-gradient(rgba(0,0,0,0.4), transparent), url(Hero.jpg);
     background-position: center top;
     background-repeat: no-repeat;
     background-size: 100%;
@@ -32,6 +31,7 @@ header{
     box-sizing: border-box;
     height: 100px;
     transition: 0.5s;
+    background-color: black;
 }
 
 .logo{
@@ -84,7 +84,6 @@ p{
     text-align: center;
     line-height: 30px;
 }
-
 .link{
   color: white;
   text-decoration: none;
@@ -96,6 +95,11 @@ p{
   color: white;
   text-decoration: none;
 }
+.link2:hover{
+  color: white;
+}
+
+
 
 
 

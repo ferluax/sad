@@ -1,6 +1,11 @@
 <x-plantilla>
-    <table class="table table-light">
-        <thead class="thead-light">
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <table class="cont-tabla">
+        <thead>
             <tr>
                 <th>NOMBRE</th>
                 <th>CATEGORIA</th>

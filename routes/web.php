@@ -32,7 +32,7 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 })->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function() {
-    Route::group(['middleware' => 'role:cliente', 'prefix' => 'cliente', 'as' => 'cliente.'], function() {
+    Route::group(['middleware' => 'role:cliente', 'prefix' => 'cliente', 'as' => 'cliente.'], function() { 
         Route::resource('paginas', \App\Http\Controllers\Clientes\ClienteControlador::class);
     });
    Route::group(['middleware' => 'role:trabajador', 'prefix' => 'trabajador', 'as' => 'trabajador.'], function() {

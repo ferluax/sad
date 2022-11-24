@@ -1,5 +1,9 @@
 <x-plantilla>
-
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
     @if ($errors->any())
     <div class="alert alert-danger">
         <ul>

@@ -1,4 +1,10 @@
 <x-plantilla>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
     <div>
     <h1>{{$servicios['nombre']}}</h1>
     <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$servicios['imagen'] }}" width="200" alt="">
