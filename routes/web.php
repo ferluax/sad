@@ -34,8 +34,10 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
 Route::group(['middleware' => 'auth'], function() {
     Route::group(['middleware' => 'role:cliente', 'prefix' => 'cliente', 'as' => 'cliente.'], function() { 
         Route::resource('paginas', \App\Http\Controllers\Clientes\ClienteControlador::class);
+        Route::resource('checkout', \App\Http\Controllers\Clientes\CheckoutControlador::class);
     });
    Route::group(['middleware' => 'role:trabajador', 'prefix' => 'trabajador', 'as' => 'trabajador.'], function() {
        Route::resource('servicios', \App\Http\Controllers\Trabajador\TrabajadorControlador::class);
    });
+   Route::post('webhooks',\App\Http\Controllers\WebhooksControlador::class);
 });

@@ -1,0 +1,9 @@
+<x-plantilla>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>hola</h1>
+</x-plantilla>
