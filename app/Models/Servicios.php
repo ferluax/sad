@@ -19,4 +19,9 @@ class Servicios extends Model
     {
         return $this->hasMany(Rating::class);
     }
+
+    public function checkout()
+    {
+        return $this->belongsTo(Checkout::class);
+    }
 }

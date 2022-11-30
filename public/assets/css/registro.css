@@ -1,0 +1,86 @@
+h1{
+    text-align: center;
+}
+
+.cont-tabla {
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 0.9em;
+    min-width: 400px;
+    border-radius: 5px 5px 0 0;
+    overflow: hidden;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+    margin: 0 auto;
+}
+
+.cont-tabla thead tr {
+    background-color: #009879;
+    color: #ffffff;
+    text-align: center;
+    font-weight: bold;
+}
+
+.cont-tabla th,
+.cont-tabla td {
+    padding: 12px 15px;
+    text-align: center;
+}
+
+.cont-tabla tbody tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+.cont-tabla tbody tr:nth-of-type(even) {
+    background-color: #f3f3f3;
+}
+
+.cont-tabla tbody tr:last-of-type {
+    border-bottom: 2px solid #009879;
+}
+
+.cont-tabla tbody tr.active-row {
+    font-weight: bold;
+    color: #009879;
+}
+.btn{
+    
+    color: #f3f3f3;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 14px 34px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 10px auto;
+    font-family: sans-serif;
+    display: inline-block;
+    text-align: center;
+    background: #009879;
+   
+}
+.btn1{
+    
+    color: #f3f3f3;
+    text-decoration: none;
+    font-size: 20px;
+    padding: 14px 34px;
+    box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+    margin: 10px auto;
+    font-family: sans-serif;
+    display: inline-block;
+    text-align: center;
+    margin-left: 700px;
+    background: #009879;
+}
+
+
+  .col-4{
+    text-align: center;
+  }
+
+  html{
+    background-image: url(../images/admin.jpg);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    background-size: cover;
+    font-family: system-ui;
+  }

@@ -76,6 +76,10 @@
             @can('manage-paginas')
             <li class="menu-item"><a class="link" href="{{ route('cliente.paginas.index') }}">Servicios</a></li>
             @endif
+
+            @can('manage-checkout')
+                <li class="menu-item"><a class="link" href="{{ url('/cliente/recibos') }}">Mis Recibos</a></li>
+            @endif
             {{-- <li class="menu-item"><a href="http://">Categorias</a></li>
             <li class="cta"><a href="{{ route('login') }}">Iniciar sesión</a></li> --}}
 
@@ -86,7 +90,7 @@
                                 this.closest('form').submit(); " role="button">
                         <i class="fas fa-sign-out-alt"></i>
         
-                        {{ __('Log Out') }}
+                        {{ __('Cerrar Sesion') }}
                     </a></li>
                     
                 </div>

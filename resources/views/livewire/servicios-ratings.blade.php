@@ -8,7 +8,7 @@
                         @auth
                             <div class="w-full space-y-5">
                                 <p class="font-medium text-blue-500 uppercase">
-                                    Rate this product
+                                    Califica este Servicio
                                 </p>
                             </div>
                             @if (session()->has('message'))
@@ -49,10 +49,10 @@
                                         </div>
                                     </div>
                                     <div class="block">
-                                        <button type="submit" class="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg">Rate</button>
+                                        <button type="submit" class="w-full px-3 py-4 font-medium text-white bg-blue-600 rounded-lg">Calificar</button>
                                         @auth
                                             @if($currentId)
-                                                <button type="submit" class="w-full px-3 py-4 mt-4 font-medium text-white bg-red-400 rounded-lg" wire:click.prevent="delete({{ $currentId }})" class="text-sm cursor-pointer">Delete</button>
+                                                <button type="submit" class="w-full px-3 py-4 mt-4 font-medium text-white bg-red-400 rounded-lg" wire:click.prevent="delete({{ $currentId }})" class="text-sm cursor-pointer">Eliminar</button>
                                             @endif
                                         @endauth
                                     </div>
@@ -79,7 +79,7 @@
             <div class="box-border flex flex-col flex-wrap justify-center -mx-4 text-indigo-900">
                 <div class="relative w-full mb-12 leading-6 text-left xl:flex-grow-0 xl:flex-shrink-0">
                     <h2 class="box-border mx-0 mt-0 font-sans text-4xl font-bold text-center text-indigo-900">
-                        Ratings
+                        Calificaciones
                     </h2>
                 </div>
             </div>
@@ -95,10 +95,10 @@
                                 {{ $comment->comment }}
                             </div>
                             <div class="box-border mt-5 text-lg font-semibold text-indigo-900 uppercase">
-                                Rating: <strong>{{ $comment->rating }}</strong> ⭐
+                                Calificacion: <strong>{{ $comment->rating }}</strong> ⭐
                                 @auth
                                     @if(auth()->user()->id == $comment->user_id || auth()->user()->role_id == 'cliente' ))
-                                        - <a wire:click.prevent="delete({{ $comment->id }})" class="text-sm cursor-pointer">Delete</a>
+                                        - <a wire:click.prevent="delete({{ $comment->id }})" class="text-sm cursor-pointer">Eliminar Calificacion</a>
                                     @endif
                                 @endauth
                             </div>
@@ -113,7 +113,7 @@
                 <div class="flex col-span-1">
                     <div class="relative px-4 mb-16 leading-6 text-left">
                         <div class="box-border text-lg font-medium text-gray-600">
-                            No ratings
+                            Sin Calificaciones
                         </div>
                     </div>
                 </div>

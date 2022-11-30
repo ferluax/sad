@@ -32,6 +32,7 @@ header{
     height: 100px;
     transition: 0.5s;
     background-color: black;
+    overflow: hidden;
 }
 
 .logo{

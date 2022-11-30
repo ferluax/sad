@@ -48,7 +48,6 @@ class TrabajadorControlador extends Controller
             'nombre' => 'required|min:3|max:255',
             'categoria' => 'required',
             'descripcion' => 'required|min:3|max:255',
-            'direccion' => 'required|email',
             'imagen' => 'required|max:10000|mimes:jpeg,png,jpg'
         ]);
 

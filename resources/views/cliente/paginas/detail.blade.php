@@ -1,72 +1,59 @@
 <x-plantilla>
-  @php
-  // SDK de Mercado Pago
-  require base_path('vendor/autoload.php'); 
-  // Agrega credenciales
-  MercadoPago\SDK::setAccessToken(config('services.mercadopago.token'));
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <table class="cont-tabla">
+    <thead>
+    <tr>
+        <th colspan="8">
+            <h1>{{$servicios['nombre']}}</h1>
+        </th>
+    </tr>
+    </thead>
+    <tr>
+        <td class="" colspan="8"><img src="{{ asset('storage').'/'.$servicios['imagen'] }}" width="400" alt=""></td>
+    </tr>
+    <tr>
+        <td colspan="8"><p>{{$servicios['descripcion']}}</p></td>
+        <tr>
+        <td colspan="8"><h1>Informacion del Trabajador</h1></td>
+        </tr>
+        <td><h2>{{$servicios->user['name']}}</h2></td>
+        <td><h2>{{$servicios->user['email']}}</h2></td>
+        <td><h2>{{$servicios->user['address']}}</h2></td>
+        <td><h2>{{$servicios->user['phone']}}</h2></td>
+        <td><h2>{{$servicios->user['trabajador_profesion']}}</h2></td>
+    </tr>
+</table>
+<br>
+<br>
+<form action="{{ url('/cliente/checkout') }}" method="post">
+    @csrf
 
-
-  // Crea un objeto de preferencia
-  $preference = new MercadoPago\Preference();
-
-  // Crea un ítem en la preferencia
-  $item = new MercadoPago\Item();
-  $item->title = $servicios['nombre'];
-  $item->quantity = 1;
-  $item->unit_price = 75.56;
-  $preference->back_urls = array(
-    "success" => "https://www.tu-sitio/success",
-    "failure" => "http://www.tu-sitio/failure",
-    "pending" => "http://www.tu-sitio/pending"
-);
-$preference->auto_return = "approved";
-  $preference->items = array($item);
-  $preference->save();
-  @endphp
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-    <div>
-    <h1>{{$servicios['nombre']}}</h1>
-    <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$servicios['imagen'] }}" width="200" alt="">
-    <p>{{$servicios['descripcion']}}</p>
-    <h2>precio por el trabajo</h2>
+    <input type="hidden" value="{{$servicios['id']}}" name="servicios_id">
+    <input type="hidden" value="{{$servicios['nombre']}}" name="servicios_nombre">
+    <input type="hidden" value="{{$servicios->user['email']}}" name="servicios_email">
+    <div style="text-align: center;">
+        <select class="form-control" name="precio" id="precio">
+            <option value="">Seleccionar opcion</option>
+            <option value="150">Baja (Se atiende en la misma semana de la solicitud)</option>
+            <option value="250">Moderada (Se atiende tres dias despues de la solicitud)</option>
+            <option value="350">Urgente (Se atiende en las primeras 24hrs de la solicitud)</option>
+        </select>
+        <br>
+        <br>
     </div>
-    {{-- <a href="{{ route('cliente.checkout.index') }}">Solicitar Servicio</a> --}}
-    {{-- SDK MercadoPago.js V2 --}}
-    <script src="https://sdk.mercadopago.com/js/v2"></script>
-
-    <div class="cho-container"></div>
-    <script>
-      const mp = new MercadoPago("{{config('services.mercadopago.key')}}", {
-        locale: 'es-MX'
-      });
-
-      mp.checkout({
-        preference: {
-          id: '{{$preference ->id}}'
-        },
-        render: {
-          container: '.cho-container',
-          label: 'Pagar',
-        }
-      });
-    </script>
+        <input type="submit" class="btn1" value="Solicitar Servicio">
+</form>
     <br>
-    <h1>Informacion del Trabajador</h1>
-    <h2>{{$servicios->user['name']}}</h2>
-    <h2>{{$servicios->user['email']}}</h2>
-    <h2>{{$servicios->user['address']}}</h2>
-    <h2>{{$servicios->user['phone']}}</h2>
-    <h2>{{$servicios->user['trabajador_profesion']}}</h2>
     <br>
     <br>
     @livewireStyles
     <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> 
     @livewire('servicios-ratings', ['servicios' => $servicios], key($servicios->id))
     @livewireScripts
 </x-plantilla>

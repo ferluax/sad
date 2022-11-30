@@ -10,7 +10,6 @@
                 <th>NOMBRE</th>
                 <th>CATEGORIA</th>
                 <th>DESCRIPCION</th>
-                <th>DIRECCION</th>
                 <th>IMAGEN</th>
                 <!-- Para editar o modificar el registro -->
                 <th>ACCIONES</th>
@@ -22,10 +21,9 @@
                 <td>{{$servicios->nombre}}</td>
                 <td>{{$servicios->categoria}}</td>
                 <td>{{$servicios->descripcion}}</td>
-                <td>{{$servicios->direccion}}</td>
                 {{-- <td>{{$servicios->imagen}}</td> --}}
                 <td>
-                    <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$servicios->imagen }}" width="200" alt="">
+                    <img src="{{ asset('storage').'/'.$servicios->imagen }}" width="200" alt="">
                 </td>
                 <td>
                     <a class="btn btn-warning" href="{{url ('/trabajador/servicios/'.$servicios->id.'/edit') }}">Editar</a>    

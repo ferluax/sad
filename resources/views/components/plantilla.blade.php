@@ -10,6 +10,7 @@
     {{-- Estilos del Proyecto --}}
     <link href="{{asset('assets/css/estilo.css')}}" rel="stylesheet" />
     <link href="{{asset('assets/css/menu.css')}}" rel="stylesheet" />
+    <link href="{{asset('assets/css/registro.css')}}" rel="stylesheet" />
 </head>
 <body>
     {{-- <a href="{{ route('dashboard') }}">Inicio</a>
@@ -60,6 +61,10 @@
                 @can('manage-paginas')
                 <li class="menu-item"><a class="link" href="{{ route('cliente.paginas.index') }}">Servicios</a></li>
                 @endif
+
+                @can('manage-checkout')
+                <li class="menu-item"><a class="link" href="{{ url('/cliente/recibos') }}">Mis Recibos</a></li>
+                @endif
                 {{-- <li class="menu-item"><a href="http://">Categorias</a></li>
                 <li class="cta"><a href="{{ route('login') }}">Iniciar sesión</a></li> --}}
     
@@ -70,7 +75,7 @@
                                     this.closest('form').submit(); " role="button">
                             <i class="fas fa-sign-out-alt"></i>
             
-                            {{ __('Log Out') }}
+                            {{ __('Cerrar Sesion') }}
                         </a></li>
                         
                     </div>
