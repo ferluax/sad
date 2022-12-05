@@ -1,49 +1,3 @@
-{{-- <x-plantilla>
-    <form action="{{ url('/trabajador/servicios/'.$servicios->id) }}" method="post" enctype="multipart/form-data">
-        
-        <!-- {{-- para evitar error 419 --}} 
-        {{-- {{ url('/trabajador/servicios/'.$servicios->id.) }} 
-        @csrf 
-        {{ method_field('PATCH') }}
-        
-        <label for="nombre">Nombre</label><br>
-        <input type="text" name="nombre" id="nombre" value="{{$servicios->nombre}}">
-        <br>
-
-        <label for="categoria">Categoria</label><br>
-        <select name="categoria" id="categoria">
-        <option value="">Seleccionar opcion</option>
-        <option value="albañileria">Albañileria</option>
-        <option value="carpinteria">Carpinteria</option>
-        <option value="cerrajeria">Cerrajeria</option>
-        <option value="electricista">Electricista</option>
-        <option value="fontaneria">fontaneria</option>
-        <option value="mecanico">Mecanico</option>
-        <option value="jardineria">Jardineria</option>
-        <option value="tecnico">Tecnico en Electrodomesticos</option>
-        <option value="pintor">Pintor</option>
-        </select>
-        <br>
-
-        <label for="descripcion">Descripcion</label><br>
-        <textarea name="descripcion" id="descripcion" cols="30" rows="10">{{$servicios->descripcion}}</textarea>
-        <br>
-
-        <label for="direccion">Direccion de email de trabajo</label><br>
-        <input type="email" name="direccion" id="direccion" value="{{$servicios->direccion}}">
-        <br>
-
-        <label for="imagen">Imagen</label><br>
-        <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$servicios->imagen }}" width="200" alt="">
-        <input type="file" name="imagen" id="imagen" value="">
-        <br><br>
-
-        <!-- enlace a index -->
-        <a href="{{ url('trabajador/servicios') }}">Regresar</a><br><br>
-
-        <input type="submit" value="Guardar cambios">
-    </form>
-</x-plantilla> --}}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -69,16 +23,23 @@
             @can('manage-servicios')
             <li class="menu-item"><a class="link" href="{{ route('trabajador.servicios.index') }}">Mis Servicios</a></li>
             @endif
+
             @can('manage-servicios')
             <li class="menu-item"><a class="link" href="{{ route('trabajador.servicios.create') }}">Agregar Servicios</a></li>
+            @endif
+
+            @can('manage-servicios')
+            <li class="menu-item"><a class="link" href="{{ url('/trabajador/categoria') }}">Mis Categorias</a></li>
+            @endif
+
+            @can('manage-servicios')
+            <li class="menu-item"><a class="link" href="{{ url('/trabajador/general') }}">Todas las Categorias</a></li>
             @endif
 
             {{-- Paginas de Cliente --}}
             @can('manage-paginas')
             <li class="menu-item"><a class="link" href="{{ route('cliente.paginas.index') }}">Servicios</a></li>
             @endif
-            {{-- <li class="menu-item"><a href="http://">Categorias</a></li>
-            <li class="cta"><a href="{{ route('login') }}">Iniciar sesión</a></li> --}}
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
@@ -94,6 +55,9 @@
             </form>
         </ul>
     </header>
+    <br>
+    <br>
+    <br> 
     <div class="form-body">
         <div class="row">
           <div class="form-holder">
@@ -108,11 +72,11 @@
         {{ method_field('PATCH') }}
         
         <label for="nombre">Nombre</label><br>
-        <input type="text" name="nombre" id="nombre" value="{{$servicios->nombre}}">
+        <input type="text" name="nombre" id="nombre" value="{{$servicios->nombre}}" required minlength="6" maxlength="255">
         <br>
 
         <label for="categoria">Categoria</label><br>
-        <select name="categoria" id="categoria">
+        <select name="categoria" id="categoria" title="Selecciona una de las categorias para editar!"  required>
         <option value="">Seleccionar opcion</option>
         <option value="albañileria">Albañileria</option>
         <option value="carpinteria">Carpinteria</option>
@@ -124,15 +88,17 @@
         <option value="tecnico">Tecnico en Electrodomesticos</option>
         <option value="pintor">Pintor</option>
         </select>
+        <div class="valid-feedback">Todo bien</div>
+        <div class="invalid-feedback">Selecciona una categoria para modificar el registro</div>
         <br>
 
         <label for="descripcion">Descripcion</label><br>
-        <textarea name="descripcion" id="descripcion" cols="30" rows="10">{{$servicios->descripcion}}</textarea>
+        <textarea name="descripcion" id="descripcion" cols="30" rows="10" required minlength="6" maxlength="255">{{$servicios->descripcion}}</textarea>
         <br>
 
         <label for="imagen">Imagen</label><br>
         <img class="img-thumbnail img-fluid" src="{{ asset('storage').'/'.$servicios->imagen }}" width="200" alt="">
-        <input type="file" name="imagen" id="imagen" value="">
+        <input type="file" name="imagen" id="imagen" value="" required>
         <br><br>
 
         <!-- enlace a index -->

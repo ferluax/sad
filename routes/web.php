@@ -41,6 +41,13 @@ Route::group(['middleware' => 'auth'], function() {
     });
    Route::group(['middleware' => 'role:trabajador', 'prefix' => 'trabajador', 'as' => 'trabajador.'], function() {
        Route::resource('servicios', \App\Http\Controllers\Trabajador\TrabajadorControlador::class);
+       Route::get('/categoria', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'categoria']);
+       Route::get('/general', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'general']);
+       Route::get('/json/{check}', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'json']);
+       Route::delete('/eliminar/{check}', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'eliminar']);
+       Route::get('/eliminados', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'eliminados']);
+       Route::post('/restore/{check}', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'restore']);
+       Route::delete('/forceDelete/{check}', [\App\Http\Controllers\Trabajador\TrabajadorControlador::class, 'forceDelete']);
    });
    Route::post('webhooks',\App\Http\Controllers\WebhooksControlador::class);
 });

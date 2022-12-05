@@ -46,7 +46,7 @@
         <br>
         <br>
     </div>
-        <input type="submit" class="btn1" value="Solicitar Servicio">
+        <input type="submit" class="btn1" value="Solicitar Servicio" required>
 </form>
     <br>
     <br>

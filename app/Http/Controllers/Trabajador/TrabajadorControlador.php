@@ -3,9 +3,11 @@
 namespace App\Http\Controllers\Trabajador;
 
 use App\Http\Controllers\Controller;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Servicios;
+use App\Models\User;
 
 // para actualizar imagenes 
 use Illuminate\Support\Facades\Storage;
@@ -141,5 +143,51 @@ class TrabajadorControlador extends Controller
         }
 
         return redirect('trabajador/servicios')->with('mensaje', 'Registro eliminado exitosamente!');
+    }
+
+    public function categoria()
+    {
+        $user = User::find(1);
+        $categoria =  Categoria::find(2);
+        return view('trabajador.servicios.categoria', compact('user', 'categoria'));
+    }
+
+    public function general()
+    {
+        $datos['categoria']=Categoria::all();
+        return view('trabajador.servicios.general', $datos);
+    }
+
+    public function json($id)
+    {
+        $data= Categoria::find($id);
+        return response()->json($data);
+    }
+
+    public function eliminar($id)
+    {
+        $categoria = Categoria::findOrFail($id);
+        $categoria->delete();
+        return redirect('/trabajador/general')->with('mensaje', 'La categoria ha sido eliminada, la puedes encontrar en categorias almacenadas');
+    }
+
+    public function eliminados()
+    {
+        $categoria = Categoria::onlyTrashed()->get();
+        return view('trabajador.servicios.basura', compact('categoria'));
+    }
+
+    public function restore($id)
+    {
+        $categoria = Categoria::onlyTrashed()->find($id);
+        $categoria->restore();
+        return redirect('/trabajador/general')->with('mensaje', 'La categoria ha sido restaurada!');
+    }
+
+    public function forceDelete($id)
+    {
+        $categoria = Categoria::onlyTrashed()->find($id);
+        $categoria->forceDelete();
+        return redirect('/trabajador/general')->with('mensaje', 'La categoria ha sido eliminada definitivamente!');
     }
 }

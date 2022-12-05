@@ -8,35 +8,29 @@
         @if(Session::has('mensaje'))
         {{ Session::get('mensaje') }}
         @endif
-    </div>  
+    </div>        
+    <a class="btn btn-info" href="{{ url('/trabajador/eliminados') }}">Categorias Almacenadas</a>
     <table class="cont-tabla">
         <thead>
             <tr>
+                <th>ID</th>
                 <th>NOMBRE</th>
-                <th>CATEGORIA</th>
-                <th>DESCRIPCION</th>
-                <th>IMAGEN</th>
                 <!-- Para editar o modificar el registro -->
                 <th>ACCIONES</th>
             </tr>
         </thead>
         <tbody>
-            @foreach($servicios as $servicios)
+            @foreach($categoria as $categoria)
             <tr>
-                <td>{{$servicios->nombre}}</td>
-                <td>{{$servicios->categoria}}</td>
-                <td>{{$servicios->descripcion}}</td>
-                {{-- <td>{{$servicios->imagen}}</td> --}}
+                <td>{{$categoria->id}}</td>
+                <td>{{$categoria->name}}</td>
                 <td>
-                    <img src="{{ asset('storage').'/'.$servicios->imagen }}" width="200" alt="">
-                </td>
-                <td>
-                    <a class="btn btn-warning" href="{{url ('/trabajador/servicios/'.$servicios->id.'/edit') }}">Editar</a>    
+                    <a class="btn btn-warning" href="{{ url('/trabajador/json/'.$categoria->id) }}">Ver</a>    
                      | 
                         <!-- formulario para eliminar un registro -->
-                        <form class="d-inline" action="{{ url('/trabajador/servicios/'.$servicios->id ) }}" method="post">
+                        <form class="d-inline" action="{{ url('/trabajador/eliminar/'.$categoria->id) }}" method="post">
                             @csrf
-                            {{ method_field('delete') }}
+                            {{ method_field('DELETE') }} 
                             <input class="btn btn-danger" type="submit" onclick="return confirm('¿Estas seguro?')" value="Eliminar">
                         </form>
                     </td>

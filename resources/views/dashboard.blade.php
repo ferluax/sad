@@ -68,8 +68,17 @@
             @can('manage-servicios')
             <li class="menu-item"><a class="link" href="{{ route('trabajador.servicios.index') }}">Mis Servicios</a></li>
             @endif
+
             @can('manage-servicios')
             <li class="menu-item"><a class="link" href="{{ route('trabajador.servicios.create') }}">Agregar Servicios</a></li>
+            @endif
+
+            @can('manage-servicios')
+            <li class="menu-item"><a class="link" href="{{ url('/trabajador/categoria') }}">Mis Categorias</a></li>
+            @endif
+
+            @can('manage-servicios')
+            <li class="menu-item"><a class="link" href="{{ url('/trabajador/general') }}">Todas las Categorias</a></li>
             @endif
 
             {{-- Paginas de Cliente --}}
@@ -80,8 +89,6 @@
             @can('manage-checkout')
                 <li class="menu-item"><a class="link" href="{{ url('/cliente/recibos') }}">Mis Recibos</a></li>
             @endif
-            {{-- <li class="menu-item"><a href="http://">Categorias</a></li>
-            <li class="cta"><a href="{{ route('login') }}">Iniciar sesión</a></li> --}}
 
             <form method="POST" action="{{ route('logout') }}">
                 @csrf
